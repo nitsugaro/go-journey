@@ -1,0 +1,110 @@
+{
+  "id": "6bdf00b2-6e59-41f3-b81a-98097450137f",
+  "rev": "fc2f39c9-3973-4ed7-9b5b-34bdcdc403b0",
+  "created_at": "2026-07-12T03:25:17.825937-03:00",
+  "modified_at": "2026-07-12T15:36:30.741333-03:00",
+  "name": "test-async",
+  "description": "",
+  "encrypted_client_inputs": false,
+  "confidential": false,
+  "active": true,
+  "debug": false,
+  "default_exp": 1,
+  "realm": "alpha",
+  "start_step_id": "84f165ee-8805-4485-993b-403ea8475f4e",
+  "sub_entries": [
+    "2c21fd3d-2e68-4ffe-9049-bff3a9676e1a"
+  ],
+  "steps": {
+    "2c21fd3d-2e68-4ffe-9049-bff3a9676e1a": {
+      "name": "HttpRequest",
+      "step_type": "HttpRequest",
+      "config": {
+        "content_type": "JSON",
+        "headers": {},
+        "method": "GET",
+        "outcome": {
+          "true": "f9ad2201-1d71-4482-8343-046c0210c437"
+        },
+        "parse_json": false,
+        "re_execute_on_chain_step": false,
+        "response_output": "ctx.httpResponse",
+        "uri": "https://httpbin.org/delay/5"
+      }
+    },
+    "54028469-9fac-439c-ba2f-68d47b1df23e": {
+      "name": "Success",
+      "step_type": "Success",
+      "config": {
+        "data": {
+          "created_from": "journey-ui"
+        }
+      }
+    },
+    "73bf8d4e-0225-4c79-a0fe-f75c5b26483e": {
+      "name": "Failure",
+      "step_type": "Failure",
+      "config": {
+        "data": {}
+      }
+    },
+    "84f165ee-8805-4485-993b-403ea8475f4e": {
+      "name": "AsyncWait",
+      "step_type": "AsyncWait",
+      "config": {
+        "outcome": {
+          "false": "73bf8d4e-0225-4c79-a0fe-f75c5b26483e",
+          "true": "54028469-9fac-439c-ba2f-68d47b1df23e"
+        },
+        "steps": [
+          {
+            "config": {
+              "content_type": "JSON",
+              "headers": {},
+              "method": "GET",
+              "outcome": {},
+              "parse_json": false,
+              "re_execute_on_chain_step": false,
+              "response_output": "ctx.httpResponse",
+              "uri": "https://httpbin.org/delay/8"
+            },
+            "name": "HttpRequest1",
+            "step_type": "HttpRequest"
+          },
+          {
+            "config": {
+              "content_type": "JSON",
+              "headers": {},
+              "method": "GET",
+              "outcome": {},
+              "parse_json": false,
+              "re_execute_on_chain_step": false,
+              "response_output": "ctx.httpResponse",
+              "uri": "https://httpbin.org/delay/5"
+            },
+            "name": "HttpRequest2",
+            "step_type": "HttpRequest"
+          }
+        ],
+        "wait_for": "ANY"
+      }
+    },
+    "f9ad2201-1d71-4482-8343-046c0210c437": {
+      "name": "HttpRequest",
+      "step_type": "HttpRequest",
+      "config": {
+        "content_type": "JSON",
+        "headers": {},
+        "method": "GET",
+        "outcome": {
+          "true": "54028469-9fac-439c-ba2f-68d47b1df23e"
+        },
+        "parse_json": false,
+        "re_execute_on_chain_step": false,
+        "response_output": "ctx.httpResponse",
+        "uri": "https://httpbin.org/delay/5"
+      }
+    }
+  },
+  "additional_properties": null
+}

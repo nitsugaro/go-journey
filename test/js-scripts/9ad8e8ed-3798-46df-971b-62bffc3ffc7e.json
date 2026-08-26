@@ -1,0 +1,10 @@
+{
+  "id": "9ad8e8ed-3798-46df-971b-62bffc3ffc7e",
+  "rev": "a83efbe9-40b9-42e8-ba9b-7b9b4bd8c547",
+  "created_at": "2026-07-18T00:38:55.907101-03:00",
+  "modified_at": "2026-07-18T00:38:55.907101-03:00",
+  "name": "test-schedule",
+  "type": "schedule",
+  "code_base64": "bG9nZ2VyLkluZm8oInJ1bm5pbmcgc2NoZWR1bGUuLi4iKQo=",
+  "args": []
+}

@@ -1,0 +1,47 @@
+{
+  "id": "00000000-0000-0000-0000-000000000005",
+  "name": "fire-and-forget-http",
+  "description": "Dispatches audit and analytics webhooks without delaying journey completion.",
+  "active": true,
+  "debug": true,
+  "default_exp": 1,
+  "start_step_id": "dispatch",
+  "sub_entries": [],
+  "steps": {
+    "dispatch": {
+      "name": "Dispatch background webhooks",
+      "step_type": "AsyncExec",
+      "config": {
+        "run_method": "SEQUENTLY",
+        "steps": [
+          {
+            "name": "Audit webhook",
+            "step_type": "HttpRequest",
+            "config": {
+              "uri": "http://127.0.0.1:18080/background/audit",
+              "method": "POST",
+              "headers": {},
+              "content_type": "JSON",
+              "body": "{\"event\":\"journey_completed\"}",
+              "response_output": "ctx.audit_response"
+            }
+          },
+          {
+            "name": "Analytics webhook",
+            "step_type": "HttpRequest",
+            "config": {
+              "uri": "http://127.0.0.1:18080/background/analytics",
+              "method": "POST",
+              "headers": {},
+              "content_type": "JSON",
+              "body": "{\"metric\":\"journey_success\"}",
+              "response_output": "ctx.analytics_response"
+            }
+          }
+        ],
+        "outcome": { "true": "success" }
+      }
+    },
+    "success": { "name": "Success", "step_type": "Success", "config": {} }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "id": "5cde5f35-533c-4ac9-b689-add3a75f17a7",
+  "rev": "9146c5bc-0fcd-4aff-b7a8-b98902b11322",
+  "created_at": "2026-07-17T17:44:10.647921-03:00",
+  "modified_at": "2026-07-17T18:05:22.765981-03:00",
+  "name": "async-test",
+  "type": "async",
+  "code_base64": "dHJ5IHsKICBsb2dnZXIuSW5mbygiUmVzcG9uc2VlZTogIiwgSlNPTi5zdHJpbmdpZnkoaHR0cC5TZW5kKCJodHRwczovL2h0dHBiaW4ub3JnL2FueXRoaW5nP3g9MTIzIikpKQp9IGNhdGNoIChlcnIpIHsKICBsb2dnZXIuRXJyb3IoInNjcmlwdCBicm9rZW46ICIgKyBlcnIubGluZU51bWJlcikKICBsb2dnZXIuRXJyb3IoInNjcmlwdCBicm9rZW46ICIgKyBlcnIubWVzc2FnZSkKICBsb2dnZXIuRXJyb3IoInNjcmlwdCBmYWlsZWQiLCBlcnIpCn0K",
+  "args": []
+}

@@ -1,0 +1,15 @@
+{
+  "id": "d8fa31b4-6d66-4465-9f42-f93a8ee6bc55",
+  "rev": "d865beb7-0a7c-4980-ba60-c151e160b711",
+  "created_at": "2026-07-12T18:26:06.467847-03:00",
+  "modified_at": "2026-07-12T18:26:06.467847-03:00",
+  "name": "logger",
+  "type": "journey",
+  "code_base64": "dHJ5IHsKICBjb25zb2xlLkxvZyhhcmdzLm1lc3NhZ2UpCn0gY2F0Y2ggKGVycikgewogIGNvbnNvbGUuTG9nKCJzY3JpcHQgZXJyb3I6ICIgKyBlcnIubWVzc2FnZSkKfQoKc2V0T3V0Y29tZSgidHJ1ZSIp",
+  "args": [
+    {
+      "id": "message",
+      "type": "string"
+    }
+  ]
+}

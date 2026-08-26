@@ -1,0 +1,58 @@
+{
+  "id": "918b9989-792e-46dc-a04f-d097710fdc1c",
+  "rev": "57b8da38-e0c5-4e41-b19d-ef190aa122ba",
+  "created_at": "2026-07-18T11:22:20.991786-03:00",
+  "modified_at": "2026-07-31T21:50:08.282884-03:00",
+  "name": "workflowwwww",
+  "description": "",
+  "encrypted_client_inputs": false,
+  "confidential": false,
+  "active": true,
+  "debug": false,
+  "journey_type": "workflow",
+  "default_exp": 1,
+  "realm": "alpha",
+  "start_step_id": "db77752f-74fb-451f-8de6-8c4f04e1a1ac",
+  "sub_entries": [],
+  "steps": {
+    "47c5dc9e-6244-4235-a659-f45d0e9926c6": {
+      "name": "HttpRequest",
+      "step_type": "HttpRequest",
+      "config": {
+        "content_type": "JSON",
+        "headers": {},
+        "method": "GET",
+        "outcome": {
+          "true": "7eca033f-816c-436b-927c-ea16e940193c"
+        },
+        "parse_json": true,
+        "re_execute_on_chain_step": false,
+        "response_output": "ctx.res",
+        "uri": "https://httpbun.com/any"
+      }
+    },
+    "7eca033f-816c-436b-927c-ea16e940193c": {
+      "name": "End",
+      "step_type": "End",
+      "config": {
+        "result": {
+          "created_from": "journey-ui"
+        }
+      }
+    },
+    "db77752f-74fb-451f-8de6-8c4f04e1a1ac": {
+      "name": "Prepare workflow",
+      "step_type": "SetCtxProperty",
+      "config": {
+        "expression": "true",
+        "key": "started",
+        "outcome": {
+          "false": "7eca033f-816c-436b-927c-ea16e940193c",
+          "true": "47c5dc9e-6244-4235-a659-f45d0e9926c6"
+        },
+        "type": "ctx"
+      }
+    }
+  },
+  "additional_properties": null
+}

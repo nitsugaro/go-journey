@@ -1,0 +1,58 @@
+{
+    "journey": {
+        "base_url": "https://journey.example.com",
+        "client_inputs_key": "client_inputs",
+        "context_prefix_key": "journey_",
+        "scripts": {
+            "folder": "js-scripts"
+        },
+        "cache": {
+            "regexp": {
+                "max": 1000
+            }
+        },
+        "rest_api": {
+            "base_path": "/journey",
+            "return_vars": false,
+            "ui": {
+                "enabled": true,
+                "path": "/journey-ui"
+            },
+            "routes": {
+                "journey_routes": [
+                    "/:realm"
+                ],
+                "journey_item_routes": [
+                    "/:realm/:journeyId"
+                ],
+                "script_routes": [
+                    "/:realm/scripts"
+                ],
+                "script_item_routes": [
+                    "/:realm/scripts/:scriptId"
+                ],
+                "script_binding_routes": [
+                    "/:realm/scripts/:scriptId/bindings"
+                ],
+                "script_type_binding_routes": [
+                    "/:realm/script-bindings"
+                ],
+                "instance_routes": [
+                    "/:realm/instances"
+                ],
+                "instance_item_routes": [
+                    "/:realm/instances/:cacheKey/:instanceId"
+                ],
+                "step_schema_routes": [
+                    "/step-schemas"
+                ],
+                "step_schema_item_routes": [
+                    "/step-schemas/:stepType"
+                ],
+                "invoke_routes": [
+                    "/:realm/invoke"
+                ]
+            }
+        }
+    }
+}

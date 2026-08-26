@@ -1,0 +1,98 @@
+{
+  "id": "00000000-0000-0000-0000-000000000008",
+  "name": "http-response-body-as-headers",
+  "description": "Calls two webhooks, then forwards fields from their response bodies as headers using placeholders.",
+  "encrypted_client_inputs": false,
+  "confidential": false,
+  "active": true,
+  "debug": true,
+  "default_exp": 1,
+  "realm": "alpha",
+  "start_step_id": "audit",
+  "sub_entries": [],
+  "steps": {
+    "audit": {
+      "name": "Call audit webhook",
+      "step_type": "HttpRequest",
+      "config": {
+        "uri": "http://127.0.0.1:18080/background/audit",
+        "method": "POST",
+        "headers": {},
+        "content_type": "JSON",
+        "body": "{\"event\":\"journey_completed\"}",
+        "response_output": "ctx.audit_response",
+        "parse_json": true,
+        "outcome": {
+          "true": "analytics"
+        }
+      }
+    },
+    "analytics": {
+      "name": "Call analytics webhook",
+      "step_type": "HttpRequest",
+      "config": {
+        "uri": "http://127.0.0.1:18080/background/analytics",
+        "method": "POST",
+        "headers": {},
+        "content_type": "JSON",
+        "body": "{\"metric\":\"journey_success\"}",
+        "response_output": "ctx.analytics_response",
+        "parse_json": true,
+        "outcome": {
+          "true": "forward"
+        }
+      }
+    },
+    "forward": {
+      "name": "Forward response body values through headers",
+      "step_type": "HttpRequest",
+      "config": {
+        "uri": "http://127.0.0.1:18080/chain/audit",
+        "method": "POST",
+        "headers": {
+          "X-Audit-Accepted": "${ctx.audit_response.jsonBody.accepted}",
+          "X-Analytics-Accepted": "${ctx.analytics_response.jsonBody.accepted}"
+        },
+        "content_type": "JSON",
+        "body": "{\"session\":\"header-forward\"}",
+        "response_output": "ctx.forward_response",
+        "parse_json": true,
+        "vars": {
+          "headers.X-Audit-Accepted": {
+            "type": "string",
+            "placeholders": [
+              {
+                "template": "ctx.audit_response.jsonBody.accepted",
+                "starts_at": 0,
+                "ends_at": 39
+              }
+            ]
+          },
+          "headers.X-Analytics-Accepted": {
+            "type": "string",
+            "placeholders": [
+              {
+                "template": "ctx.analytics_response.jsonBody.accepted",
+                "starts_at": 0,
+                "ends_at": 43
+              }
+            ]
+          }
+        },
+        "outcome": {
+          "true": "success"
+        }
+      }
+    },
+    "success": {
+      "name": "Success",
+      "step_type": "Success",
+      "config": {
+        "data": {
+          "forwarded": true
+        }
+      }
+    }
+  },
+  "additional_properties": null
+}

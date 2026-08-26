@@ -1,0 +1,54 @@
+{
+  "id": "00000000-0000-0000-0000-000000000015",
+  "name": "cookie-request-response-fixture",
+  "description": "Covers request cookie reads and response cookie mutations.",
+  "active": true,
+  "default_exp": 1,
+  "start_step_id": "set-cookie",
+  "sub_entries": [],
+  "steps": {
+    "set-cookie": {
+      "name": "Set response cookie",
+      "step_type": "SetCookie",
+      "config": {
+        "cookies": [
+          {
+            "name": "journey-cookie",
+            "value": "created",
+            "path": "/",
+            "http_only": true,
+            "same_site": "lax"
+          }
+        ],
+        "outcome": {
+          "true": "read-cookie",
+          "error": "failure"
+        }
+      }
+    },
+    "read-cookie": {
+      "name": "Read request cookie",
+      "step_type": "ReadCookie",
+      "config": {
+        "name": "journey-cookie",
+        "context": "ctx",
+        "output": "request_cookie",
+        "outcome": {
+          "true": "success",
+          "not_found": "success",
+          "error": "failure"
+        }
+      }
+    },
+    "success": {
+      "name": "Success",
+      "step_type": "Success",
+      "config": {}
+    },
+    "failure": {
+      "name": "Failure",
+      "step_type": "Failure",
+      "config": {}
+    }
+  }
+}

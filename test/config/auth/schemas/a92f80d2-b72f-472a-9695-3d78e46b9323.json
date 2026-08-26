@@ -1,0 +1,37 @@
+{
+  "id": "a92f80d2-b72f-472a-9695-3d78e46b9323",
+  "rev": "391628f3-35e0-43f9-a534-0d4bcf19255f",
+  "created_at": "2026-07-13T20:00:29.248027-03:00",
+  "modified_at": "2026-07-13T20:54:44.192371-03:00",
+  "name": "special-headers",
+  "realm": "alpha",
+  "draft": "draft-07",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": true,
+    "properties": {
+      "Content-Type": {
+        "items": {
+          "enum": [
+            "application/json"
+          ],
+          "type": "string"
+        },
+        "maxItems": 1,
+        "type": "array"
+      },
+      "X-Request-Id": {
+        "items": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "type": "array"
+      }
+    },
+    "required": [
+      "Content-Type",
+      "X-Request-Id"
+    ],
+    "type": "object"
+  }
+}

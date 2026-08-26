@@ -1,0 +1,64 @@
+{
+  "id": "08ff9137-f2ba-4b89-bd7b-49835c1682c4",
+  "rev": "ce65fdfa-5c79-4245-80bb-6750d9587e7c",
+  "created_at": "2026-07-12T18:24:53.211576-03:00",
+  "modified_at": "2026-07-12T18:27:46.749939-03:00",
+  "name": "chain-flow",
+  "description": "",
+  "encrypted_client_inputs": false,
+  "confidential": false,
+  "active": true,
+  "debug": false,
+  "journey_type": "auth-journey",
+  "default_exp": 1,
+  "realm": "alpha",
+  "start_step_id": "0fe9a438-2d72-48c1-9056-fe5b9710fbc1",
+  "sub_entries": [],
+  "steps": {
+    "0fe9a438-2d72-48c1-9056-fe5b9710fbc1": {
+      "name": "Chain",
+      "step_type": "Chain",
+      "config": {
+        "outcome": {
+          "true": "4fe6b730-715e-4400-8b5c-fe54ba52653b"
+        },
+        "steps": [
+          {
+            "config": {
+              "args": {
+                "message": "step-1"
+              },
+              "outcome": {},
+              "script_id": "d8fa31b4-6d66-4465-9f42-f93a8ee6bc55",
+              "timeout_seconds": 60
+            },
+            "name": "Step1",
+            "step_type": "Script"
+          },
+          {
+            "config": {
+              "args": {
+                "message": "step-2"
+              },
+              "outcome": {},
+              "script_id": "d8fa31b4-6d66-4465-9f42-f93a8ee6bc55",
+              "timeout_seconds": 60
+            },
+            "name": "Step2",
+            "step_type": "Script"
+          }
+        ]
+      }
+    },
+    "4fe6b730-715e-4400-8b5c-fe54ba52653b": {
+      "name": "Success",
+      "step_type": "Success",
+      "config": {
+        "data": {
+          "created_from": "journey-ui"
+        }
+      }
+    }
+  },
+  "additional_properties": null
+}

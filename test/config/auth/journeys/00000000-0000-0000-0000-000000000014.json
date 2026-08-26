@@ -1,0 +1,39 @@
+{
+  "id": "00000000-0000-0000-0000-000000000014",
+  "name": "jwt-signing-fixture",
+  "description": "Covers the SignJWT step registration; focused tests exercise signing modes.",
+  "active": true,
+  "default_exp": 1,
+  "start_step_id": "sign",
+  "sub_entries": [],
+  "steps": {
+    "sign": {
+      "name": "Sign access token",
+      "step_type": "SignJWT",
+      "config": {
+        "algorithm": "HS256",
+        "key": {
+          "type": "plain-secret",
+          "value": "fixture-secret",
+          "kid": "fixture-key"
+        },
+        "claims": {
+          "sub": "fixture-user",
+          "token_use": "access"
+        },
+        "issuer": "go-journey",
+        "set_iat": true,
+        "set_jti": true,
+        "expires_in_seconds": 300,
+        "context": "ctx",
+        "output": "signedToken",
+        "outcome": {
+          "true": "success",
+          "error": "failure"
+        }
+      }
+    },
+    "success": { "name": "Success", "step_type": "Success", "config": {} },
+    "failure": { "name": "Failure", "step_type": "Failure", "config": {} }
+  }
+}

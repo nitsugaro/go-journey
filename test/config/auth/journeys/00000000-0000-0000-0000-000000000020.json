@@ -1,0 +1,56 @@
+{
+  "id": "00000000-0000-0000-0000-000000000020",
+  "name": "schedule-cache-step-fixture",
+  "description": "Fixture coverage for transparent schedule cache operations.",
+  "active": false,
+  "confidential": true,
+  "debug": false,
+  "default_exp": 1,
+  "realm": "alpha",
+  "journey_type": "workflow",
+  "start_step_id": "00000000-0000-0000-0000-000000000201",
+  "steps": {
+    "00000000-0000-0000-0000-000000000201": {
+      "name": "Get",
+      "step_type": "ScheduleCacheGet",
+      "config": {
+        "schedule": "shared-data",
+        "max_age_seconds": 300,
+        "stale_if_error": true,
+        "output": "closedCtx.cached",
+        "outcome": {
+          "true": "00000000-0000-0000-0000-000000000202",
+          "error": "00000000-0000-0000-0000-000000000204"
+        }
+      }
+    },
+    "00000000-0000-0000-0000-000000000202": {
+      "name": "Refresh",
+      "step_type": "ScheduleCacheRefresh",
+      "config": {
+        "schedule": "shared-data",
+        "output": "closedCtx.refreshed",
+        "outcome": {
+          "true": "00000000-0000-0000-0000-000000000203",
+          "error": "00000000-0000-0000-0000-000000000204"
+        }
+      }
+    },
+    "00000000-0000-0000-0000-000000000203": {
+      "name": "Clear",
+      "step_type": "ScheduleCacheClear",
+      "config": {
+        "schedule": "shared-data",
+        "outcome": {
+          "true": "00000000-0000-0000-0000-000000000204",
+          "error": "00000000-0000-0000-0000-000000000204"
+        }
+      }
+    },
+    "00000000-0000-0000-0000-000000000204": {
+      "name": "End",
+      "step_type": "End",
+      "config": {}
+    }
+  }
+}

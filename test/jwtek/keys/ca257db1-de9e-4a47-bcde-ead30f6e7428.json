@@ -1,0 +1,14 @@
+{
+  "id": "ca257db1-de9e-4a47-bcde-ead30f6e7428",
+  "rev": "2bcfa574-a875-4963-8670-216614371fbb",
+  "created_at": "2026-05-17T17:48:13.470335-03:00",
+  "modified_at": "2026-05-17T17:48:13.470335-03:00",
+  "kty": "HMAC",
+  "iat": 1779050893,
+  "exp": 0,
+  "active": true,
+  "value": "EonWtxaOcnu59uhNxuuRcE4nXk4eS8KKh5boTLa0U8ZtiICNh+IcKsiU5L1l5U/jZfqbwSGMsYgV+G8/e50wTA==",
+  "use": "sig",
+  "alg": "HS384",
+  "purpose": "OIDC"
+}

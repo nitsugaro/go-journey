@@ -1,0 +1,139 @@
+{
+  "id": "00000000-0000-0000-0000-000000000013",
+  "name": "ldap-fixture",
+  "description": "Fixture coverage for LDAP repository steps. Inactive because tests use mocked LDAP repositories.",
+  "active": false,
+  "default_exp": 1,
+  "start_step_id": "ldap-search",
+  "sub_entries": [],
+  "steps": {
+    "ldap-search": {
+      "name": "Search user",
+      "step_type": "LDAPSearch",
+      "config": {
+        "connection": "corporate_ad",
+        "base_dn": "ou=people,dc=example,dc=com",
+        "scope": "sub",
+        "deref_aliases": "never",
+        "filter": "(uid=${ctx.username})",
+        "attributes": ["uid", "mail", "memberOf"],
+        "size_limit": 1,
+        "time_limit_seconds": 3,
+        "types_only": false,
+        "output": "closedCtx.ldap.user",
+        "outcome": {
+          "found": "ldap-compare",
+          "not_found": "failure",
+          "error": "failure"
+        }
+      }
+    },
+    "ldap-compare": {
+      "name": "Compare group",
+      "step_type": "LDAPCompare",
+      "config": {
+        "connection": "corporate_ad",
+        "dn": "uid=${ctx.username},ou=people,dc=example,dc=com",
+        "attribute": "memberOf",
+        "value": "cn=admins,dc=example,dc=com",
+        "outcome": {
+          "true": "ldap-bind",
+          "false": "failure",
+          "error": "failure"
+        }
+      }
+    },
+    "ldap-bind": {
+      "name": "Validate credentials",
+      "step_type": "LDAPBind",
+      "config": {
+        "connection": "corporate_ad",
+        "dn": "uid=${ctx.username},ou=people,dc=example,dc=com",
+        "password": "${closedCtx.password}",
+        "outcome": {
+          "valid": "ldap-modify",
+          "invalid": "failure",
+          "error": "failure"
+        }
+      }
+    },
+    "ldap-modify": {
+      "name": "Modify mail",
+      "step_type": "LDAPModify",
+      "config": {
+        "connection": "corporate_ad",
+        "dn": "uid=${ctx.username},ou=people,dc=example,dc=com",
+        "changes": [
+          {
+            "operation": "replace",
+            "attribute": "mail",
+            "values": ["${ctx.email}"]
+          }
+        ],
+        "outcome": {
+          "success": "ldap-add",
+          "not_found": "failure",
+          "error": "failure"
+        }
+      }
+    },
+    "ldap-add": {
+      "name": "Add temp entry",
+      "step_type": "LDAPAdd",
+      "config": {
+        "connection": "corporate_ad",
+        "dn": "uid=${ctx.username},ou=temp,dc=example,dc=com",
+        "attributes": {
+          "objectClass": ["inetOrgPerson"],
+          "uid": ["${ctx.username}"],
+          "sn": ["${ctx.username}"],
+          "cn": ["${ctx.username}"]
+        },
+        "outcome": {
+          "success": "ldap-modify-dn",
+          "already_exists": "ldap-modify-dn",
+          "error": "failure"
+        }
+      }
+    },
+    "ldap-modify-dn": {
+      "name": "Move temp entry",
+      "step_type": "LDAPModifyDN",
+      "config": {
+        "connection": "corporate_ad",
+        "dn": "uid=${ctx.username},ou=temp,dc=example,dc=com",
+        "rdn": "uid=${ctx.username}",
+        "delete_old_rdn": true,
+        "new_superior": "ou=people,dc=example,dc=com",
+        "outcome": {
+          "success": "ldap-delete",
+          "not_found": "failure",
+          "error": "failure"
+        }
+      }
+    },
+    "ldap-delete": {
+      "name": "Delete temp entry",
+      "step_type": "LDAPDelete",
+      "config": {
+        "connection": "corporate_ad",
+        "dn": "uid=${ctx.username},ou=temp,dc=example,dc=com",
+        "outcome": {
+          "success": "success",
+          "not_found": "success",
+          "error": "failure"
+        }
+      }
+    },
+    "success": {
+      "name": "Success",
+      "step_type": "Success",
+      "config": {}
+    },
+    "failure": {
+      "name": "Failure",
+      "step_type": "Failure",
+      "config": {}
+    }
+  }
+}

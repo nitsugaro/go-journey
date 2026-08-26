@@ -1,0 +1,18 @@
+{
+  "id": "d8202961-0434-470a-9d42-0582862baa25",
+  "rev": "a8ff7074-627e-45cf-991b-39b88dc44e92",
+  "created_at": "0001-01-01T00:00:00Z",
+  "modified_at": "2026-07-25T21:13:23.983929-03:00",
+  "cache_key": "http_client",
+  "instance_id": "http-bin",
+  "config": {
+    "baseUrl": "https://${env.available.domain}",
+    "clientCertPEM": "",
+    "clientKeyPEM": "",
+    "defaultHeaders": {},
+    "followRedirects": false,
+    "skipVerifySSL": false,
+    "timeout": 0,
+    "trustedCertPEM": ""
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "id": "37aca03f-39aa-470a-ac8e-10ce9d62ef9f",
+  "rev": "2d3c2ef2-0fb0-49f6-b517-ccf0ad788b78",
+  "created_at": "2026-05-17T17:48:16.745656-03:00",
+  "modified_at": "2026-05-17T17:48:16.745656-03:00",
+  "kty": "HMAC",
+  "iat": 1779050896,
+  "exp": 0,
+  "active": true,
+  "value": "nu+WmZDymPFL1YmHgJ4ERBfptjtq5W2iqidjciR0uGk=",
+  "use": "sig",
+  "alg": "HS256",
+  "purpose": "JOURNEY"
+}

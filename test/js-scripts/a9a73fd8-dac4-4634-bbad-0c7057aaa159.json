@@ -1,0 +1,16 @@
+{
+  "id": "a9a73fd8-dac4-4634-bbad-0c7057aaa159",
+  "rev": "5f10d490-7017-4eed-88a9-3134fac1f2ff",
+  "created_at": "2026-07-25T20:59:30.378983-03:00",
+  "modified_at": "2026-07-25T20:59:30.378983-03:00",
+  "name": "is-dev",
+  "type": "auth",
+  "code_base64": "dHJ5IHsKICAvLyBjdHguU2V0KCJleGFtcGxlIiwgdHJ1ZSkKICBsb2dnZXIuSW5mbygic2NyaXB0IGNvbXBsZXRlZCIpCiAgc2V0T3V0Y29tZSgidHJ1ZSIpCn0gY2F0Y2ggKGVycikgewogIGxvZ2dlci5FcnJvcigic2NyaXB0IGZhaWxlZCIsIGVycikKfQo=",
+  "args": [],
+  "additional_props": {
+    "outcomes": [
+      "true",
+      "false"
+    ]
+  }
+}

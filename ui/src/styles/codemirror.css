@@ -1,0 +1,132 @@
+.cm-theme,
+.cm-theme *,
+.cm-editor,
+.cm-editor.cm-focused,
+.cm-editor *,
+.cm-editor.cm-focused * {
+  outline: none !important;
+}
+
+.cm-focused {
+  outline: none !important;
+}
+
+.cm-editor {
+  background: var(--color-surface-subtle) !important;
+  color: var(--color-ink) !important;
+  box-shadow: none !important;
+}
+
+.cm-editor.cm-focused {
+  background: var(--color-surface) !important;
+}
+
+.cm-scroller,
+.cm-content,
+.cm-line,
+.cm-gutters,
+.cm-gutter {
+  background: transparent !important;
+  color: var(--color-ink) !important;
+}
+
+.journey-script-editor,
+.journey-script-editor .cm-editor {
+  min-height: 0;
+  height: 100%;
+}
+
+.journey-script-editor .cm-scroller {
+  overflow: auto !important;
+}
+
+.journey-inline-code-input .cm-scroller {
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+
+.journey-inline-code-input .cm-scroller:hover,
+.journey-inline-code-input .cm-scroller:focus-within {
+  scrollbar-color: color-mix(in srgb, var(--color-muted-soft) 35%, transparent) transparent;
+}
+
+.journey-inline-code-input .cm-scroller::-webkit-scrollbar {
+  height: 3px;
+}
+
+.journey-inline-code-input .cm-scroller::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.journey-inline-code-input .cm-scroller::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: transparent;
+}
+
+.journey-inline-code-input .cm-scroller:hover::-webkit-scrollbar-thumb,
+.journey-inline-code-input .cm-scroller:focus-within::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--color-muted-soft) 35%, transparent);
+}
+
+.cm-gutters,
+.cm-gutter {
+  border: 0 !important;
+  color: var(--color-muted-soft) !important;
+}
+
+.cm-selectionBackground {
+  background: var(--color-blue-selection) !important;
+}
+
+.cm-cursor {
+  border-left-color: var(--color-ink) !important;
+}
+
+.cm-placeholder {
+  color: var(--color-muted-soft) !important;
+}
+
+.cm-tooltip,
+.cm-tooltip-autocomplete {
+  overflow: hidden !important;
+  border: 1px solid var(--color-border) !important;
+  border-radius: 18px !important;
+  background: var(--color-surface-overlay) !important;
+  color: var(--color-ink) !important;
+  box-shadow: 0 20px 50px var(--color-overlay) !important;
+}
+
+.cm-tooltip-autocomplete ul {
+  background: transparent !important;
+  color: var(--color-ink) !important;
+}
+
+.cm-tooltip-autocomplete ul li {
+  color: var(--color-ink) !important;
+  padding: 8px 12px !important;
+}
+
+.cm-tooltip-autocomplete ul li[aria-selected] {
+  background: var(--color-blue-subtle) !important;
+  color: var(--color-blue) !important;
+}
+
+.cm-completionLabel,
+.cm-completionDetail,
+.cm-completionInfo {
+  color: inherit !important;
+}
+
+.cm-completionDetail {
+  color: var(--color-muted-soft) !important;
+}
+
+.cm-completionInfo {
+  border: 1px solid var(--color-border) !important;
+  border-radius: 16px !important;
+  background: var(--color-surface-overlay) !important;
+  color: var(--color-muted) !important;
+  box-shadow: 0 16px 40px var(--color-overlay) !important;
+}

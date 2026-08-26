@@ -1,0 +1,114 @@
+{
+  "id": "00000000-0000-0000-0000-000000000002",
+  "name": "synchronous-default-steps",
+  "description": "Proves ExtendExp, NotEmpty placeholders, IfExpression, SwitchExpression and Chain in one journey.",
+  "active": true,
+  "debug": true,
+  "default_exp": 1,
+  "realm": "alpha",
+  "start_step_id": "extend",
+  "sub_entries": [],
+  "steps": {
+    "extend": {
+      "name": "Extend expiration",
+      "step_type": "ExtendExp",
+      "config": {
+        "minutes": "7",
+        "outcome": { "true": "not-empty" }
+      }
+    },
+    "not-empty": {
+      "name": "Resolve the expiration from context",
+      "step_type": "NotEmpty",
+      "config": {
+        "string": "${ctx.journey_extend_journey_exp}",
+        "vars": {
+          "string": {
+            "type": "string",
+            "placeholders": [
+              {
+                "template": "ctx.journey_extend_journey_exp",
+                "starts_at": 0,
+                "ends_at": 33
+              }
+            ]
+          }
+        },
+        "outcome": { "true": "if-expression", "false": "failure" }
+      }
+    },
+    "if-expression": {
+      "name": "Check context value",
+      "step_type": "IfExpression",
+      "config": {
+        "expression": "getCtxProperty(\"journey_extend_journey_exp\", 0) == 7",
+        "outcome": { "true": "switch-expression", "false": "failure" }
+      }
+    },
+    "switch-expression": {
+      "name": "Select matching expression",
+      "step_type": "SwitchExpression",
+      "config": {
+        "expressions": [
+          { "name": "seven", "exp": "getCtxProperty(\"journey_extend_journey_exp\", 0) == 7" }
+        ],
+        "outcome": { "seven": "chain" }
+      }
+    },
+    "chain": {
+      "name": "Execute dependent HTTP calls sequentially",
+      "step_type": "Chain",
+      "config": {
+        "steps": [
+          {
+            "name": "Create session",
+            "step_type": "HttpRequest",
+            "config": {
+              "uri": "http://127.0.0.1:18080/chain/session",
+              "method": "POST",
+              "headers": {},
+              "response_output": "ctx.chain_session",
+              "parse_json": true
+            }
+          },
+          {
+            "name": "Audit created session",
+            "step_type": "HttpRequest",
+            "config": {
+              "uri": "http://127.0.0.1:18080/chain/audit",
+              "method": "POST",
+              "headers": {},
+              "content_type": "JSON",
+              "body": "{\"session\":\"${ctx.chain_session.jsonBody.id}\"}",
+              "vars": {
+                "body": {
+                  "type": "string",
+                  "placeholders": [
+                    {
+                      "template": "ctx.chain_session.jsonBody.id",
+                      "starts_at": 12,
+                      "ends_at": 44
+                    }
+                  ]
+                }
+              },
+              "response_output": "ctx.chain_audit",
+              "parse_json": true
+            }
+          }
+        ],
+        "outcome": { "true": "chain-verified" }
+      }
+    },
+    "chain-verified": {
+      "name": "Verify dependent call received the session",
+      "step_type": "IfExpression",
+      "config": {
+        "expression": "getCtxProperty(\"chain_audit.jsonBody.session\", \"\") == \"session-42\"",
+        "outcome": { "true": "success", "false": "failure" }
+      }
+    },
+    "success": { "name": "Success", "step_type": "Success", "config": {} },
+    "failure": { "name": "Failure", "step_type": "Failure", "config": {} }
+  }
+}

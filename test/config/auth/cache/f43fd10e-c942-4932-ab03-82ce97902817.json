@@ -1,0 +1,26 @@
+{
+  "id": "f43fd10e-c942-4932-ab03-82ce97902817",
+  "rev": "deb24b60-afc8-46be-b491-6fb57532bb7a",
+  "created_at": "0001-01-01T00:00:00Z",
+  "modified_at": "2026-07-12T02:00:00.399236-03:00",
+  "cache_key": "ldap_client",
+  "instance_id": "test-ldap",
+  "config": {
+    "urls": [
+      "ldap://127.0.0.1:389"
+    ],
+    "base_dn": "dc=example,dc=com",
+    "bind": {
+      "method": "simple",
+      "dn": "cn=admin,dc=example,dc=com",
+      "password": "admin"
+    },
+    "connect_timeout_seconds": 5,
+    "operation_timeout_seconds": 10,
+    "pool": {
+      "max_open": 10,
+      "max_idle": 5,
+      "max_lifetime_seconds": 300
+    }
+  }
+}

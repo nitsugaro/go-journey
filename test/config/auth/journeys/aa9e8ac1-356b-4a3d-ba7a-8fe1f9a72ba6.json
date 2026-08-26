@@ -1,0 +1,487 @@
+{
+  "id": "aa9e8ac1-356b-4a3d-ba7a-8fe1f9a72ba6",
+  "rev": "9cfd6f39-7f7e-468c-a8af-452dd1067d2c",
+  "created_at": "2026-07-10T12:34:54.127695-03:00",
+  "modified_at": "2026-08-19T21:00:10.644138-03:00",
+  "name": "my-prueba",
+  "description": "hola",
+  "encrypted_client_inputs": false,
+  "confidential": false,
+  "active": true,
+  "debug": false,
+  "journey_type": "auth",
+  "default_exp": 1,
+  "realm": "alpha",
+  "start_step_id": "1c79a8ee-bd48-4c28-8769-634762471b8c",
+  "sub_entries": [
+    "368eed21-517c-468b-980c-6ad8c268685a",
+    "58c11424-c4e3-4dde-99b6-f3b46830ab19",
+    "6d972622-16fd-4dad-b8ca-256bff87287e",
+    "73d38ef0-9b37-4528-b8cb-f2bef779ef75",
+    "a194101a-d2ad-40d9-97b1-652cd3f7ba26",
+    "ae59e066-5f4b-4ad8-8557-6119b053d04b",
+    "b32c3cd6-de88-4994-90ce-b77e90cea0cb"
+  ],
+  "steps": {
+    "09bf013a-37d2-43ba-98c9-e4986cccb989": {
+      "name": "Error",
+      "step_type": "Metadata",
+      "config": {
+        "format": "TEXT",
+        "metadata": "error validating JWT",
+        "outcome": {
+          "true": "d9e06ef3-7455-4519-a29c-94adfbe52b07"
+        }
+      }
+    },
+    "0ef5e032-f6e7-436c-882c-58288d7830bb": {
+      "name": "Metadata",
+      "step_type": "Metadata",
+      "config": {
+        "format": "TEXT",
+        "metadata": "False",
+        "outcome": {
+          "true": "46bb9e01-13f7-49ed-ae5d-9c34a4d01437"
+        }
+      }
+    },
+    "1c158981-4963-4641-9ad2-74368ed4c732": {
+      "name": "Tokens",
+      "step_type": "Metadata",
+      "config": {
+        "format": "JSON",
+        "metadata": "${encCtx.tokens}",
+        "outcome": {
+          "true": "46bb9e01-13f7-49ed-ae5d-9c34a4d01437"
+        },
+        "vars": {
+          "metadata": {
+            "type": "",
+            "placeholders": [
+              {
+                "template": "encCtx.tokens",
+                "starts_at": 0,
+                "ends_at": 16
+              }
+            ]
+          }
+        }
+      }
+    },
+    "1c79a8ee-bd48-4c28-8769-634762471b8c": {
+      "name": "HttpRequest",
+      "step_type": "HttpRequest",
+      "config": {
+        "body": "grant_type=client_credentials\u0026client_id=test\u0026client_secret=Hola123!\u0026scope=fr:idm:*",
+        "content_type": "URLENCODED",
+        "headers": {
+          "Authorization": "Basic dGVzdDpIb2xhMTIzIQ==",
+          "X-SSL-Client-Cert": "MIIC/zCCAeegAwIBAgIUUY1t6lIggI46TrYAxSQ2mySg6+IwDQYJKoZIhvcNAQELBQAwDzENMAsGA1UEAwwEdGVzdDAeFw0yNjA3MTkyMjU0MjRaFw0yNzA3MTkyMjU0MjRaMA8xDTALBgNVBAMMBHRlc3QwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCtNiulBOtzGw7/5QEbxJvLpbQWSHbXBvbvLzN8IK1lVrnl5im8VVvf8fnqjXL1Rtgd+8guVHLJBGD7AREcj8r+DXMKwbF92ImE1EUJc8vDfDx+yKKrT2UmewhoytT9VkeyOWnFx7pYM74V48t7pEIhkQFAoczlNJrsghl+Bgmr3NkbWPTm6S5i6k89dIrXxqOmY6MYdsfYQacfoCx4Cn8tbYPXPoAmoeHYIqs7fwg25mQpoTch14i5U9d6JPW5Bnv5rWxI+wjJvCyR++TwFW417V13of9LZ0enDN1GV5XKXlOEz2PSJ+PWEJgz33kPY/yNw6LBVLrZV5Q2DEwEaBxtAgMBAAGjUzBRMB0GA1UdDgQWBBS2kGcwmhTfIWuVB49rItphdptR3TAfBgNVHSMEGDAWgBS2kGcwmhTfIWuVB49rItphdptR3TAPBgNVHRMBAf8EBTADAQH/MA0GCSqGSIb3DQEBCwUAA4IBAQCLpFaod6s5p8oy/1OwVOsxBLDPkZ35tswAHYKOtLNKFTYdLMibdU3c2gCK7oVZMgE742rvdBrs41AGm1MCCyIEeVkeMuS3xCUHAMvJ/xhsZ1gYNfsQcz5jsoKnojNe7rdz0o3feaeDCE9TNH6GiislKJSIEkjfqpxsDl9wMDwn9IBfcWufuzqvJ/Ufa3vEhnQYiLHS5qFjpxzTkIc5U+1ypw0hQTyrkTVE/1LpM5L0sIxbcD3kY+XmIwfIvcjIZfVfkukrdJpB2t6e6XanH2eASSgeYExV6o4UxBx1QVbN7SJpgxEJFxjGt3CwON+d3S4rFsCqt5WSFfUVUvKUYIH7"
+        },
+        "http_instance": "http-bin",
+        "method": "POST",
+        "outcome": {
+          "true": "311cd70d-a771-4e58-864a-e3be9cdb1279"
+        },
+        "parse_json": true,
+        "re_execute_on_chain_step": false,
+        "response_output": "ctx.oauthRes",
+        "uri": "/am/oauth2/alpha/access_token"
+      }
+    },
+    "1d7aae8c-c4f4-4dd5-ab4b-bd97b4c6a962": {
+      "name": "Metadata",
+      "step_type": "Metadata",
+      "config": {
+        "format": "JSON",
+        "metadata": "${ctx.ldapsearch}",
+        "outcome": {
+          "true": "5367c94c-cdc3-400d-9b3b-8dbc57a9ef93"
+        },
+        "vars": {
+          "metadata": {
+            "type": "",
+            "placeholders": [
+              {
+                "template": "ctx.ldapsearch",
+                "starts_at": 0,
+                "ends_at": 17
+              }
+            ]
+          }
+        }
+      }
+    },
+    "2347332b-5ccd-48ec-b174-65bcb7665e51": {
+      "name": "Metadata",
+      "step_type": "Metadata",
+      "config": {
+        "format": "TEXT",
+        "metadata": "True",
+        "outcome": {
+          "true": "46bb9e01-13f7-49ed-ae5d-9c34a4d01437"
+        }
+      }
+    },
+    "27cd2b8d-a071-4f4c-a717-2efcad61523a": {
+      "name": "LDAPModify",
+      "step_type": "LDAPModify",
+      "config": {
+        "changes": [
+          {
+            "attribute": "sn",
+            "operation": "replace",
+            "values": [
+              "Gomez"
+            ]
+          }
+        ],
+        "connection": "test-ldap",
+        "dn": "uid=aromero,ou=People,dc=example,dc=com",
+        "outcome": {
+          "error": "09bf013a-37d2-43ba-98c9-e4986cccb989",
+          "not_found": "388b40c7-0f13-4ad9-ab2e-a42cb8adf7fe",
+          "success": "1d7aae8c-c4f4-4dd5-ab4b-bd97b4c6a962"
+        }
+      }
+    },
+    "28ab03c6-2ab6-4c67-962d-2165f8d9aa18": {
+      "name": "Metadata",
+      "step_type": "Metadata",
+      "config": {
+        "format": "JSON",
+        "metadata": "${tempCtx.journey_oidc.error}",
+        "outcome": {
+          "true": "46bb9e01-13f7-49ed-ae5d-9c34a4d01437"
+        },
+        "vars": {
+          "metadata": {
+            "type": "",
+            "placeholders": [
+              {
+                "template": "tempCtx.journey_oidc.error",
+                "starts_at": 0,
+                "ends_at": 29
+              }
+            ]
+          }
+        }
+      }
+    },
+    "311cd70d-a771-4e58-864a-e3be9cdb1279": {
+      "name": "SetCtxProperty",
+      "step_type": "SetCtxProperty",
+      "config": {
+        "expression": "\"valor\"",
+        "key": "hola",
+        "outcome": {
+          "false": "4269171f-02ab-4a70-910d-35db5a4b0286",
+          "true": "4269171f-02ab-4a70-910d-35db5a4b0286"
+        },
+        "type": "closedCtx"
+      }
+    },
+    "368eed21-517c-468b-980c-6ad8c268685a": {
+      "name": "LDAPBind",
+      "step_type": "LDAPBind",
+      "config": {
+        "connection": "test-ldap",
+        "dn": "uid=aromero,ou=People,dc=example,dc=com",
+        "outcome": {
+          "error": "09bf013a-37d2-43ba-98c9-e4986cccb989",
+          "invalid": "388b40c7-0f13-4ad9-ab2e-a42cb8adf7fe",
+          "valid": "c7536e5c-d34b-4c26-82f1-b2c80986fbde"
+        },
+        "password": "Hola123"
+      }
+    },
+    "388b40c7-0f13-4ad9-ab2e-a42cb8adf7fe": {
+      "name": "Invalid",
+      "step_type": "Metadata",
+      "config": {
+        "format": "TEXT",
+        "metadata": "JWT is invalid",
+        "outcome": {
+          "true": "46bb9e01-13f7-49ed-ae5d-9c34a4d01437"
+        }
+      }
+    },
+    "4269171f-02ab-4a70-910d-35db5a4b0286": {
+      "name": "Metadata",
+      "step_type": "Metadata",
+      "config": {
+        "format": "JSON",
+        "metadata": "${ctx.oauthRes.jsonBody}",
+        "outcome": {
+          "true": "46bb9e01-13f7-49ed-ae5d-9c34a4d01437"
+        },
+        "vars": {
+          "metadata": {
+            "type": "",
+            "placeholders": [
+              {
+                "template": "ctx.oauthRes.jsonBody",
+                "starts_at": 0,
+                "ends_at": 24
+              }
+            ]
+          }
+        }
+      }
+    },
+    "46bb9e01-13f7-49ed-ae5d-9c34a4d01437": {
+      "name": "Success",
+      "step_type": "Success",
+      "config": {
+        "data": {
+          "created_from": ""
+        }
+      }
+    },
+    "5367c94c-cdc3-400d-9b3b-8dbc57a9ef93": {
+      "name": "Success",
+      "step_type": "Success",
+      "config": {
+        "data": {}
+      }
+    },
+    "58c11424-c4e3-4dde-99b6-f3b46830ab19": {
+      "name": "VerifyJWT",
+      "step_type": "VerifyJWT",
+      "config": {
+        "algorithm": "RS256",
+        "context": "ctx",
+        "jwk_uri": "https://api.transmitsecurity.io/cis/oidc/jwks",
+        "mode": "jwk",
+        "outcome": {
+          "error": "09bf013a-37d2-43ba-98c9-e4986cccb989",
+          "invalid": "388b40c7-0f13-4ad9-ab2e-a42cb8adf7fe",
+          "valid": "c7536e5c-d34b-4c26-82f1-b2c80986fbde"
+        },
+        "required_claims": {
+          "realm": "alph"
+        },
+        "secret": "z-HWqCh5JHsUhQ0N1iSdtXwUCabyWLffUPRBOD4U40K0IJuAKxlG0F8SjSDlJxub6mMu-IuYvu9DMct1XmH29w",
+        "token": "eyJhbGciOiJIUzI1NiIsImtpZCI6ImVlZGU0NWI1LTBlYTUtNDkxZS1iNzY2LWIzNTUxNDMzYTFmMSJ9.eyJjdHgiOnsiY2xpZW50X2lucHV0cyI6W3siZXh0ZXJuYWxfaWQiOiJwcm9maWxlLnVzZXJuYW1lIiwibGFiZWwiOiJVc2VyIG5hbWUiLCJyZXF1aXJlZCI6ZmFsc2UsInN0ZXBfdHlwZSI6IkZvcm0iLCJ0eXBlIjoic3RyaW5nIiwidXNlcl9uYW1lIjp0cnVlfV19LCJqdGkiOiIwcWh1Z3Y2RncvenpTaS9iZXpIMTBBPT0iLCJyZWFsbSI6ImFscGhhIiwidHJhY2tpbmdzX2lkIjpbIjAwMDAwMDAwLTAwMDAtMDAwMC0wMDAwLTAwMDAwMDAwMDAwMDoxZDFjNjZkNy00OTk5LTQ5YjAtYjU2MC0xZThmNmViNTE0ZjUiXX0.ylAavQB2KHCusUZuK7gR4SxWl8BoB6990t0hj9rJFcA",
+        "validate_exp": false,
+        "validate_iat": false
+      }
+    },
+    "697b525c-d07e-4f22-90f9-232830bbeb48": {
+      "name": "Metadata",
+      "step_type": "Metadata",
+      "config": {
+        "format": "TEXT",
+        "metadata": "error",
+        "outcome": {
+          "true": "5367c94c-cdc3-400d-9b3b-8dbc57a9ef93"
+        }
+      }
+    },
+    "6d972622-16fd-4dad-b8ca-256bff87287e": {
+      "name": "Chain",
+      "step_type": "Chain",
+      "config": {
+        "outcome": {
+          "true": "27cd2b8d-a071-4f4c-a717-2efcad61523a"
+        },
+        "steps": [
+          {
+            "config": {
+              "context": "ctx",
+              "inputs": [
+                {
+                  "external_id": "username",
+                  "id": "userName",
+                  "label": "User Name",
+                  "step_type": "Form",
+                  "type": "string",
+                  "user_name": true
+                }
+              ],
+              "outcome": {}
+            },
+            "name": "Form",
+            "step_type": "Form"
+          },
+          {
+            "config": {
+              "format": "TEXT",
+              "metadata": "Hello!",
+              "outcome": {}
+            },
+            "name": "Metadata",
+            "step_type": "Metadata"
+          }
+        ]
+      }
+    },
+    "71072eec-d694-42cf-b852-58a302e32b9c": {
+      "name": "Failure",
+      "step_type": "Failure",
+      "config": {
+        "data": {},
+        "failure_url": "https://google.com"
+      }
+    },
+    "73d38ef0-9b37-4528-b8cb-f2bef779ef75": {
+      "name": "SetCtxProperty",
+      "step_type": "SetCtxProperty",
+      "config": {
+        "expression": "\"true\"",
+        "key": "ldapsearch",
+        "outcome": {
+          "false": "71072eec-d694-42cf-b852-58a302e32b9c",
+          "true": "71072eec-d694-42cf-b852-58a302e32b9c"
+        },
+        "type": "ctx"
+      }
+    },
+    "a194101a-d2ad-40d9-97b1-652cd3f7ba26": {
+      "name": "PAR Response",
+      "step_type": "Metadata",
+      "config": {
+        "format": "JSON",
+        "metadata": "${ctx.oauthRes}",
+        "outcome": {
+          "true": "d9e06ef3-7455-4519-a29c-94adfbe52b07"
+        },
+        "vars": {
+          "metadata": {
+            "type": "",
+            "placeholders": [
+              {
+                "template": "ctx.oauthRes",
+                "starts_at": 0,
+                "ends_at": 15
+              }
+            ]
+          }
+        }
+      }
+    },
+    "ae59e066-5f4b-4ad8-8557-6119b053d04b": {
+      "name": "SubJourney",
+      "step_type": "SubJourney",
+      "config": {
+        "journey_id": "e9afb23b-ae99-4d5b-98dd-d30e07d1bd00",
+        "outcome": {
+          "false": "0ef5e032-f6e7-436c-882c-58288d7830bb",
+          "true": "2347332b-5ccd-48ec-b174-65bcb7665e51"
+        },
+        "pass_tag": false,
+        "props": {
+          "pass": "true"
+        },
+        "props_context": "closedCtx",
+        "set_tag": false
+      }
+    },
+    "b32c3cd6-de88-4994-90ce-b77e90cea0cb": {
+      "name": "LDAPSearch",
+      "step_type": "LDAPSearch",
+      "config": {
+        "attributes": [
+          "sn"
+        ],
+        "base_dn": "ou=People,dc=example,dc=com",
+        "connection": "test-ldap",
+        "deref_aliases": "never",
+        "filter": "(uid=aromero)",
+        "outcome": {
+          "error": "cf018d14-2485-4105-a3a4-a035853be241",
+          "found": "1d7aae8c-c4f4-4dd5-ab4b-bd97b4c6a962",
+          "not_found": "697b525c-d07e-4f22-90f9-232830bbeb48"
+        },
+        "output": "ctx.ldapsearch",
+        "scope": "sub",
+        "size_limit": 0,
+        "time_limit_seconds": 0,
+        "types_only": false
+      }
+    },
+    "c7536e5c-d34b-4c26-82f1-b2c80986fbde": {
+      "name": "Valid",
+      "step_type": "Metadata",
+      "config": {
+        "format": "TEXT",
+        "metadata": "JWT is ${ctx.val}valid",
+        "outcome": {
+          "true": "46bb9e01-13f7-49ed-ae5d-9c34a4d01437"
+        },
+        "vars": {
+          "metadata": {
+            "type": "string",
+            "placeholders": [
+              {
+                "template": "ctx.val",
+                "starts_at": 7,
+                "ends_at": 17
+              }
+            ]
+          }
+        }
+      }
+    },
+    "cf018d14-2485-4105-a3a4-a035853be241": {
+      "name": "Metadata",
+      "step_type": "Metadata",
+      "config": {
+        "format": "TEXT",
+        "metadata": "error",
+        "outcome": {
+          "true": "5367c94c-cdc3-400d-9b3b-8dbc57a9ef93"
+        }
+      }
+    },
+    "d9e06ef3-7455-4519-a29c-94adfbe52b07": {
+      "name": "OIDCAuthorizationCode",
+      "step_type": "OIDCAuthorizationCode",
+      "config": {
+        "aud_url": "https://openam-enrakkau.forgeblocks.com:443/am/oauth2/realms/root/realms/alpha",
+        "authorize_url": "https://openam-enrakkau.forgeblocks.com/am/oauth2/realms/root/realms/alpha/authorize",
+        "client_auth_method": "client_secret_post",
+        "client_id": "test",
+        "client_secret": "Hola123!",
+        "extra_authorize_params": {
+          "authorization_details": [
+            {
+              "type": "payment"
+            }
+          ]
+        },
+        "extra_token_params": {},
+        "nonce": true,
+        "outcome": {
+          "false": "28ab03c6-2ab6-4c67-962d-2165f8d9aa18",
+          "true": "1c158981-4963-4641-9ad2-74368ed4c732"
+        },
+        "output": "encCtx.tokens",
+        "par_url": "",
+        "pkce": true,
+        "private_key_jwk": {
+          "alg": "RS256",
+          "d": "CU7xvw4HekEU3OcugA_6LYCZ24_JW8iWU_NDSGmodEu8P8dYHsXLAYBs8eimAgBZwOZ3lpNiaMw1nwwe8_jvhHq-iPWJkTffWz7uDd4dVOe2ZAgKTAled-4Cnu1pnFS1dx6VCoxscQGxtdhZTGibaFMDjo04PbRxtvl5PTCawOdsfdNNCbUUf4SjoUHQFaGcJa6RgeF_vXyeFLpro5CSvJWdJOzmjZ_A135rBFLFcE6uAM1t-AG83ClmDRqLEJz_2rGZoltaRYSGQJcDd7XRS1x_VWcDLthS08ZmKAnuV8SB-T_KU6atM2yBTuoErH_uTNgXcXJdwUpFwlQ6k47Z6Q",
+          "dp": "NmeoSA4jpu4WxghFTJSFM5N5b_AnFM9qc7-PDCX0zzqAL1fNrklSCOlPIGfE-1hrbMKxgAT3KZ7F_WnnLUgv9XckSLBarLU9WTY7iQxkkuLL2kGqdYcmvU5l6YbTUJQWLc3I6DhXSRR4bK3GXF34NGUQYi8jccsAlVogVO5kvfE",
+          "dq": "zxWDzZ80aJqqAGxKr-kv-04AXIzG9YSFmnQh75ONoa-yfnUZTbkn5MY-5kvy3kP1WdUqrFa6o6bz1TDHvNlGdGkif4X1mfwLORmCqR8kSonf1iUt5yMWbtYpOxx32LJMuR3S5AF-ZjJvYswsqCzLJIx4lMN9QaJFfNe1yCcSFtk",
+          "e": "AQAB",
+          "kid": "Eqmrb0mwGtZvFmO9aOglf8gj28Jo0GKjg6TSE8FLu1g",
+          "kty": "RSA",
+          "n": "x_WgpgOY0AkZqWEMrVhkmBzseevpFYTMnw_WPaRbg_6lrzcNK4A2UMJSEMayB-PJAMmnAGAT0YJOyVaG2oYwCD7LhDVpcTgy8beU4kumIedpKVzR11Sx8gbmItN5Ymm9RqS7VFP-nA8NZrLa_RjdRNQsmr31TxaQwSbwWakI84hwi--_-XIeX2U7JLWc20VZ3ZBa8nUtjP6wGh2V-r8TjTt7687OYrvU7IbX8xehIAOvAOfT5eRgIjErdEV-owggRImcIz3NqfUddRbEeJs9ZEMrZo5U3yziQpnMz9XQZyKzE_VjCSbVfK8mGL3R1DobqWqFhWOKK49xzhnZAKztfw",
+          "p": "732R8lq3UVQCjAUloy2QKj4gP3FVPDnDQLAgHYYjTfwjYn46tJmF4ntkctgQArTe79-BfbQwrA15ZnsO168RJ5oZCHiPkAY5v67rxCjzvqXgT3efAYp1jaNW79ltw1NXG7fCM3gU7wHQbIEVfwryJaUEY5XmbgWLFGfRfQVBjac",
+          "q": "1b5uHxjv2AAr-a_3BJd7nQTXQsBS1r2IMc7Wb1MKQgWzo1jnkQWr1OJkoND7TcXiRtEdt2zJSzpbwa_Pm9JTJp58dvj8MqFNNbXzZBrn7LyV5yTY0OqcB-edqUASyv6M3HQmBPHOPPTRbvlRLIVm4pxNRUl4yRreVbaPGslqDGk",
+          "qi": "fHczOwxNkJ83jZ2FhriJx20MoQvCP5a7HctTb6jDsSjps2fa73Wo_JyfWFxAYynOyx1VUpfZ53hAa8qWukDyq49-Vcxb7xGu4d6wHxkn922josSQ_vIrD4yV4LJhoZ2nqGA66dHUMVJ1_CLsJPsMrJdGMqWjDSeU1_1CZSU0HuU",
+          "use": "sig"
+        },
+        "redirect_uri": "https://httpbin.org/anything",
+        "scope": [
+          "openid"
+        ],
+        "signing_algorithm": "RS256",
+        "token_url": "https://openam-enrakkau.forgeblocks.com:443/am/oauth2/realms/alpha/access_token",
+        "use_jar": true
+      }
+    }
+  },
+  "additional_properties": null
+}

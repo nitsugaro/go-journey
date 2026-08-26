@@ -1,0 +1,171 @@
+{
+  "id": "00000000-0000-0000-0000-000000000003",
+  "name": "interactive-default-steps",
+  "description": "Proves typed grouped Input, Choice, Metadata and placeholder resolution across token resumes.",
+  "active": true,
+  "debug": true,
+  "default_exp": 1,
+  "realm": "alpha",
+  "start_step_id": "username",
+  "sub_entries": [],
+  "steps": {
+    "username": {
+      "name": "Collect profile form",
+      "step_type": "Form",
+      "config": {
+        "context": "ctx",
+        "object": "formData",
+        "inputs": [
+          {
+            "id": "userName",
+            "external_id": "profile.username",
+            "label": "User name",
+            "prompt": "Choose your user name",
+            "type": "string",
+            "required": true,
+            "pattern": "^[A-Za-z][A-Za-z0-9_]+$",
+            "min": 3,
+            "max": 30,
+            "user_name": true
+          },
+          {
+            "id": "email",
+            "external_id": "profile.email",
+            "label": "Email",
+            "type": "string",
+            "required": true,
+            "pattern": "^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$",
+            "max": 254
+          },
+          {
+            "id": "age",
+            "external_id": "profile.age",
+            "label": "Age",
+            "type": "int",
+            "required": true,
+            "min": 18,
+            "max": 120
+          },
+          {
+            "id": "newsletter",
+            "external_id": "profile.newsletter",
+            "label": "Receive product news",
+            "type": "bool",
+            "required": false
+          }
+        ],
+        "outcome": { "true": "transform" }
+      }
+    },
+    "transform": {
+      "name": "Build normalized profile",
+      "step_type": "Transform",
+      "config": {
+        "target_context": "ctx",
+        "target": "normalized",
+        "merge": false,
+        "fields": [
+          { "target": "displayName", "value": "User ${ctx.formData.userName}" },
+          { "target": "age", "value": "${ctx.formData.age}", "type": "int" },
+          { "target": "newsletter", "value": "${ctx.formData.newsletter}", "type": "bool" }
+        ],
+        "vars": {
+          "fields.0.value": {
+            "type": "string",
+            "placeholders": [
+              { "template": "ctx.formData.userName", "starts_at": 5, "ends_at": 29 }
+            ]
+          },
+          "fields.1.value": {
+            "type": "int",
+            "placeholders": [
+              { "template": "ctx.formData.age", "starts_at": 0, "ends_at": 19 }
+            ]
+          },
+          "fields.2.value": {
+            "type": "bool",
+            "placeholders": [
+              { "template": "ctx.formData.newsletter", "starts_at": 0, "ends_at": 26 }
+            ]
+          }
+        },
+        "outcome": { "true": "assert", "error": "failure" }
+      }
+    },
+    "assert": {
+      "name": "Check profile invariants",
+      "step_type": "Assert",
+      "config": {
+        "mode": "all",
+        "rules": [
+          {
+            "id": "adult",
+            "expression": "getCtxProperty(\"normalized.age\", 0) >= 18",
+            "message": "The customer must be at least 18"
+          },
+          {
+            "id": "username-present",
+            "expression": "getCtxProperty(\"formData.userName\", \"\") != \"\"",
+            "message": "User name is required"
+          }
+        ],
+        "errors_context": "ctx",
+        "errors_target": "validationErrors",
+        "outcome": { "valid": "wait", "invalid": "failure", "error": "failure" }
+      }
+    },
+    "wait": {
+      "name": "Honor an already reached schedule",
+      "step_type": "WaitUntil",
+      "config": {
+        "timestamp": "2020-01-01T00:00:00Z",
+        "timezone": "UTC",
+        "max_wait_seconds": "${ctx.formData.age}",
+        "vars": {
+          "max_wait_seconds": {
+            "type": "number",
+            "placeholders": [
+              {
+                "template": "ctx.formData.age",
+                "starts_at": 0,
+                "ends_at": 19
+              }
+            ]
+          }
+        },
+        "outcome": { "resumed": "choice", "limit_exceeded": "failure", "invalid": "failure" }
+      }
+    },
+    "choice": {
+      "name": "Confirm",
+      "step_type": "Choice",
+      "config": {
+        "default_choice": "yes",
+        "outcome": { "yes": "metadata", "no": "failure" }
+      }
+    },
+    "metadata": {
+      "name": "Return personalized metadata",
+      "step_type": "Metadata",
+      "config": {
+        "metadata": "Welcome ${closedCtx.journey_user_name}; choice accepted",
+        "format": "TEXT",
+        "vars": {
+          "metadata": {
+            "type": "string",
+            "placeholders": [
+              {
+                "template": "closedCtx.journey_user_name",
+                "starts_at": 8,
+                "ends_at": 38
+              }
+            ]
+          }
+        },
+        "outcome": { "true": "success" }
+      }
+    },
+    "success": { "name": "Success", "step_type": "Success", "config": {} },
+    "failure": { "name": "Failure", "step_type": "Failure", "config": {} }
+  }
+}

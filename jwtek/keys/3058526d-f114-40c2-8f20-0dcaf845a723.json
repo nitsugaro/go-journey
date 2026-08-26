@@ -1,0 +1,14 @@
+{
+  "id": "3058526d-f114-40c2-8f20-0dcaf845a723",
+  "rev": "86c379f8-29c3-4e38-9e1d-c718bedb52e6",
+  "created_at": "2026-07-05T21:15:06.200758-03:00",
+  "modified_at": "2026-07-05T21:15:06.200758-03:00",
+  "kty": "OKP",
+  "iat": 1783296906,
+  "exp": 0,
+  "active": true,
+  "value": "MC4CAQAwBQYDK2VwBCIEICHoxFfHu+BA3AeZvC/0Ow2hnZ9W757BaS1wWrF/rIrU",
+  "use": "sig",
+  "alg": "EdDSA",
+  "purpose": "OIDC"
+}

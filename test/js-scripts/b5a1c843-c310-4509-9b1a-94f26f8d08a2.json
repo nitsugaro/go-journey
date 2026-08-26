@@ -1,0 +1,10 @@
+{
+  "id": "b5a1c843-c310-4509-9b1a-94f26f8d08a2",
+  "rev": "356baeb3-8acc-4ade-a521-befce53f07b2",
+  "created_at": "2025-07-18T17:20:46.128113-03:00",
+  "modified_at": "2026-07-17T18:06:22.9463-03:00",
+  "name": "test-registration-script",
+  "type": "journey",
+  "code_base64": "dHJ5IHsKICAgIGxvZ2dlci5JbmZvKCJSZXNwb25zZWVlOiAiLCBKU09OLnN0cmluZ2lmeShodHRwLlNlbmQoImh0dHBzOi8vaHR0cGJpbi5vcmcvYW55dGhpbmc/eD0xMjMiKSkpCgogIGV4ZWN1dGVBc3luYygiYXN5bmMtdGVzdCIsIHsgbG9nZ2VyLCBodHRwIH0pCiAgc2V0T3V0Y29tZSgidHJ1ZSIpCn0gY2F0Y2ggKGUpIHsKICBjb25zb2xlLkxvZygnZXJyb3I6ICcgKyBlLm1lc3NhZ2UpOwp9Cg==",
+  "args": []
+}

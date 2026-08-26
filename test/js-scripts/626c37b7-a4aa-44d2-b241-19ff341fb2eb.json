@@ -1,0 +1,9 @@
+{
+  "id": "626c37b7-a4aa-44d2-b241-19ff341fb2eb",
+  "rev": "e78bcdf2-2daf-4fc9-9229-1d7b66b9650e",
+  "created_at": "2026-07-11T11:28:58.958475-03:00",
+  "modified_at": "2026-07-11T12:23:32.998499-03:00",
+  "name": "lib-calc",
+  "type": "library",
+  "code_base64": "ZXhwb3J0cy5zdW0gPSAobnVtMSwgbnVtMikgPT4gbnVtMSArIG51bTIKZXhwb3J0cy5zdWIgPSAobnVtMSwgbnVtMikgPT4gbnVtMSAtIG51bTIKZXhwb3J0cy5tdWwgPSAobnVtMSwgbnVtMikgPT4gbnVtMSAqIG51bTIKZXhwb3J0cy5kaXYgPSAobnVtMSwgbnVtMikgPT4gbnVtMSArIG51bTIKCmV4cG9ydHMubG9nQmluZ2lucyA9IChjb25zb2xlKSA9PiBjb25zb2xlLkxvZyhKU09OLnN0cmluZ2lmeShPYmplY3Qua2V5cyh0aGlzKSkp"
+}

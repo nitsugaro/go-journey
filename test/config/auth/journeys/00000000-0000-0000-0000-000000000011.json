@@ -1,0 +1,53 @@
+{
+  "id": "00000000-0000-0000-0000-000000000011",
+  "name": "test-11",
+  "description": "test",
+  "active": true,
+  "default_exp": 1,
+  "start_step_id": "set-ctx",
+  "sub_entries": [],
+  "steps": {
+    "set-ctx": {
+      "name": "Store request method",
+      "step_type": "SetCtxProperty",
+      "config": {
+        "type": "ctx",
+        "key": "val",
+        "expression": "{\"y\":1}",
+        "outcome": {
+          "true": "00000000-0000-0000-0000-000000000125"
+        }
+      }
+    },
+    "00000000-0000-0000-0000-000000000125": {
+      "name": "Script fixture",
+      "step_type": "Script",
+      "config": {
+        "script_id": "b5a1c843-c310-4509-9b1a-94f26f8d08a2",
+        "timeout_seconds": 5,
+        "args": {
+          "x": "${ctx.val}"
+        },
+        "outcome": {
+          "true": "success"
+        },
+        "vars": {
+          "args.x": {
+            "placeholders": [
+              {
+                "template": "ctx.val",
+                "starts_at": 0,
+                "ends_at": 10
+              }
+            ]
+          }
+        }
+      }
+    },
+    "success": {
+      "name": "Success",
+      "step_type": "Success",
+      "config": {}
+    }
+  }
+}

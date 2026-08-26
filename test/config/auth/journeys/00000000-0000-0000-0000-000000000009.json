@@ -1,0 +1,33 @@
+{
+  "id": "00000000-0000-0000-0000-000000000009",
+  "name": "jwt-verification-fixture",
+  "description": "Covers the VerifyJWT step registration; focused tests exercise every verification mode.",
+  "active": true,
+  "default_exp": 1,
+  "start_step_id": "verify",
+  "sub_entries": [],
+  "steps": {
+    "verify": {
+      "name": "Verify access token",
+      "step_type": "VerifyJWT",
+      "config": {
+        "mode": "plain-secret",
+        "token": "invalid.jwt.fixture",
+        "secret": "fixture-secret",
+        "algorithm": "HS256",
+        "validate_iat": true,
+        "validate_exp": true,
+        "required_claims": { "token_use": "access" },
+        "context": "ctx",
+        "output": "verifiedToken",
+        "outcome": {
+          "valid": "success",
+          "invalid": "failure",
+          "error": "failure"
+        }
+      }
+    },
+    "success": { "name": "Success", "step_type": "Success", "config": {} },
+    "failure": { "name": "Failure", "step_type": "Failure", "config": {} }
+  }
+}

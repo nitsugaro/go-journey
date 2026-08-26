@@ -1,0 +1,111 @@
+{
+  "id": "e9afb23b-ae99-4d5b-98dd-d30e07d1bd00",
+  "rev": "bb8df248-d8c4-4eca-abe7-218eaa6c64d8",
+  "created_at": "2026-07-11T09:04:12.07285-03:00",
+  "modified_at": "2026-07-11T10:57:53.543024-03:00",
+  "name": "inner-prueba",
+  "description": "",
+  "encrypted_client_inputs": false,
+  "confidential": true,
+  "active": true,
+  "debug": false,
+  "default_exp": 1,
+  "realm": "alpha",
+  "start_step_id": "3c1a18f9-26c1-4db5-9971-4935123da68b",
+  "sub_entries": [
+    "da8b4539-f79a-40e6-aa2a-c3f46bcda581"
+  ],
+  "steps": {
+    "02d087d7-c8d3-4dec-b6f3-3647a1263a5a": {
+      "name": "Success",
+      "step_type": "Success",
+      "config": {
+        "data": {
+          "created_from": "journey-ui"
+        }
+      }
+    },
+    "3c1a18f9-26c1-4db5-9971-4935123da68b": {
+      "name": "Condition",
+      "step_type": "Condition",
+      "config": {
+        "compare_value": "true",
+        "operation": "equal",
+        "outcome": {
+          "false": "f58be512-4668-4662-a533-cfd5178718dc",
+          "true": "02d087d7-c8d3-4dec-b6f3-3647a1263a5a"
+        },
+        "type": "bool",
+        "value": "${closedCtx.journey_props.pass}",
+        "vars": {
+          "value": {
+            "type": "",
+            "placeholders": [
+              {
+                "template": "closedCtx.journey_props.pass",
+                "starts_at": 0,
+                "ends_at": 31
+              }
+            ]
+          }
+        }
+      }
+    },
+    "da8b4539-f79a-40e6-aa2a-c3f46bcda581": {
+      "name": "Collect user name",
+      "step_type": "Form",
+      "config": {
+        "context": "ctx",
+        "inputs": [
+          {
+            "external_id": "profile.username",
+            "id": "userName",
+            "label": "User name",
+            "max": 30,
+            "min": 3,
+            "prompt": "Choose your user name",
+            "required": true,
+            "type": "string",
+            "user_name": true
+          }
+        ],
+        "outcome": {
+          "true": "3c1a18f9-26c1-4db5-9971-4935123da68b"
+        }
+      }
+    },
+    "f58be512-4668-4662-a533-cfd5178718dc": {
+      "name": "Failure",
+      "step_type": "Failure",
+      "config": {
+        "data": {
+          "key_1": "hola"
+        }
+      }
+    }
+  },
+  "additional_properties": {
+    "props": [
+      {
+        "id": "pass",
+        "name": "Pass",
+        "type": "bool"
+      },
+      {
+        "id": "prop_2",
+        "name": "Prop 2",
+        "type": "list"
+      },
+      {
+        "id": "prop_3",
+        "name": "Prop 3",
+        "type": "object"
+      },
+      {
+        "id": "prop_4",
+        "name": "Prop 4",
+        "type": "int"
+      }
+    ]
+  }
+}

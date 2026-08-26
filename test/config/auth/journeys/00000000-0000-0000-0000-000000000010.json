@@ -1,0 +1,31 @@
+{
+  "id": "00000000-0000-0000-0000-000000000010",
+  "name": "request-context-properties-fixture",
+  "description": "Covers request-aware context assignment and context property removal.",
+  "active": true,
+  "default_exp": 1,
+  "start_step_id": "set-request-method",
+  "sub_entries": [],
+  "steps": {
+    "set-request-method": {
+      "name": "Store request method",
+      "step_type": "SetCtxProperty",
+      "config": {
+        "type": "ctx",
+        "key": "requestMethod",
+        "expression": "request.Method",
+        "outcome": { "true": "remove-request-method", "false": "failure" }
+      }
+    },
+    "remove-request-method": {
+      "name": "Remove request method",
+      "step_type": "RemoveCtxProperty",
+      "config": {
+        "property_path": "ctx.requestMethod",
+        "outcome": { "true": "success", "false": "failure" }
+      }
+    },
+    "success": { "name": "Success", "step_type": "Success", "config": {} },
+    "failure": { "name": "Failure", "step_type": "Failure", "config": {} }
+  }
+}

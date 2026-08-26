@@ -1,0 +1,124 @@
+@keyframes notes-panel-in {
+  from {
+    opacity: 0;
+    transform: translateX(18px) scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes drawer-panel-in {
+  from {
+    opacity: 0;
+    transform: translateX(22px) scale(0.98);
+    filter: blur(2px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes modal-backdrop-in {
+  from {
+    opacity: 0;
+    backdrop-filter: blur(0);
+  }
+
+  to {
+    opacity: 1;
+    backdrop-filter: blur(4px);
+  }
+}
+
+@keyframes modal-backdrop-out {
+  from {
+    opacity: 1;
+    backdrop-filter: blur(4px);
+  }
+
+  to {
+    opacity: 0;
+    backdrop-filter: blur(0);
+  }
+}
+
+@keyframes modal-surface-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.965);
+    filter: blur(2px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes modal-surface-out {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(12px) scale(0.975);
+    filter: blur(2px);
+  }
+}
+
+@keyframes popover-panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.985);
+    filter: blur(1px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+.motion-modal-backdrop {
+  animation: modal-backdrop-in 180ms ease-out both;
+}
+
+.motion-modal-backdrop[data-closing="true"] {
+  animation: modal-backdrop-out 140ms ease-in both;
+}
+
+.motion-modal-surface {
+  animation: modal-surface-in 220ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.motion-modal-backdrop[data-closing="true"] .motion-modal-surface {
+  animation: modal-surface-out 140ms ease-in both;
+}
+
+.motion-popover-panel {
+  animation: popover-panel-in 180ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  transform-origin: top right;
+}
+
+.motion-popover-panel[data-closing="true"] {
+  animation: modal-surface-out 140ms ease-in both;
+}
+
+.motion-panel {
+  animation: drawer-panel-in 220ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.motion-panel[data-closing="true"] {
+  animation: modal-surface-out 140ms ease-in both;
+}

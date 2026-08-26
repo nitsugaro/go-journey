@@ -1,0 +1,42 @@
+{
+    "id": "00000000-0000-0000-0000-000000000001",
+    "rev": "ba80cddd-75a0-45a7-90c8-899c13d8164f",
+    "created_at": "0001-01-01T00:00:00Z",
+    "modified_at": "2026-03-24T14:22:15.386415048Z",
+    "name": "inner",
+    "encrypted_client_inputs": false,
+    "confidential": false,
+    "active": true,
+    "debug": true,
+    "default_exp": 1,
+    "realm": "alpha",
+    "start_step_id": "1d1c66d7-4999-49b0-b560-1e8f6eb514f5",
+    "sub_entries": [],
+    "steps": {
+        "0d1c66d7-4999-49b0-b560-1e8f6eb514f5": {
+            "name": "Success",
+            "step_type": "Success",
+            "config": {}
+        },
+        "1d1c66d7-4999-49b0-b560-1e8f6eb514f5": {
+            "name": "Optional user name form",
+            "step_type": "Form",
+            "config": {
+                "inputs": [
+                    {
+                        "id": "userName",
+                        "external_id": "profile.username",
+                        "type": "string",
+                        "label": "User name",
+                        "required": false,
+                        "user_name": true
+                    }
+                ],
+                "context": "ctx",
+                "outcome": {
+                    "true": "0d1c66d7-4999-49b0-b560-1e8f6eb514f5"
+                }
+            }
+        }
+    }
+}

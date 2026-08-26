@@ -1,0 +1,70 @@
+{
+  "id": "00000000-0000-0000-0000-000000000007",
+  "rev": "b4034ae3-4b8d-4abf-b683-6dabbb753ff8",
+  "created_at": "0001-01-01T00:00:00Z",
+  "modified_at": "2026-07-09T13:07:20.195938-03:00",
+  "name": "expected-business-failure",
+  "description": "Proves that a false business condition terminates through the Failure step.",
+  "encrypted_client_inputs": false,
+  "confidential": false,
+  "active": true,
+  "debug": true,
+  "default_exp": 1,
+  "realm": "alpha",
+  "start_step_id": "00000000-0000-0000-0000-000000000004",
+  "sub_entries": [],
+  "steps": {
+    "00000000-0000-0000-0000-000000000001": {
+      "name": "Reject an ineligible request",
+      "step_type": "IfExpression",
+      "config": {
+        "expression": "requestQuery.First(\"name\", \"\") == \"${ctx.val}\"",
+        "outcome": {
+          "false": "00000000-0000-0000-0000-000000000002",
+          "true": "00000000-0000-0000-0000-000000000003"
+        },
+        "vars": {
+          "expression": {
+            "type": "string",
+            "placeholders": [
+              {
+                "template": "ctx.val",
+                "starts_at": 35,
+                "ends_at": 45
+              }
+            ]
+          }
+        }
+      }
+    },
+    "00000000-0000-0000-0000-000000000002": {
+      "name": "Failure",
+      "step_type": "Failure",
+      "config": {
+        "data": {
+          "reason": "eligibility_failed"
+        },
+        "failure_url": "/not-eligible"
+      }
+    },
+    "00000000-0000-0000-0000-000000000003": {
+      "name": "Success",
+      "step_type": "Success",
+      "config": {}
+    },
+    "00000000-0000-0000-0000-000000000004": {
+      "name": "Store request method",
+      "step_type": "SetCtxProperty",
+      "config": {
+        "expression": "\"hola\"",
+        "key": "val",
+        "outcome": {
+          "false": "00000000-0000-0000-0000-000000000002",
+          "true": "00000000-0000-0000-0000-000000000001"
+        },
+        "type": "ctx"
+      }
+    }
+  },
+  "additional_properties": null
+}

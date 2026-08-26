@@ -1,0 +1,10 @@
+{
+  "id": "f0143037-ebfa-48e0-afa4-1d4db7b15f3a",
+  "rev": "0632d153-3a7e-497b-aacf-c30438bc0ddc",
+  "created_at": "2026-08-01T16:45:35.472826-03:00",
+  "modified_at": "2026-08-01T17:30:50.483447-03:00",
+  "name": "random-uuid",
+  "type": "schedule",
+  "code_base64": "aWYoIXByZXZpb3VzUmVzdWx0KSB7CiAgcHJldmlvdXNSZXN1bHQgPSBbXQp9CgpwcmV2aW91c1Jlc3VsdC5wdXNoKHsidXVpZCI6IGNyeXB0by5OZXdVVUlEKCksICJkYXRlIjogbmV3IERhdGUoKS50b0lTT1N0cmluZygpfSkKClNldFJlc3VsdChwcmV2aW91c1Jlc3VsdCk=",
+  "args": []
+}

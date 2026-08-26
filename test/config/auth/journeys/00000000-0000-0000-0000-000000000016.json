@@ -1,0 +1,23 @@
+{
+  "id": "00000000-0000-0000-0000-000000000016",
+  "name": "workflow-end-fixture",
+  "description": "Fixture coverage for workflow journeys and the End step.",
+  "active": false,
+  "confidential": true,
+  "debug": false,
+  "default_exp": 0,
+  "realm": "alpha",
+  "journey_type": "workflow-journey",
+  "start_step_id": "end",
+  "steps": {
+    "end": {
+      "name": "End",
+      "step_type": "End",
+      "config": {
+        "result": {
+          "status": "done"
+        }
+      }
+    }
+  }
+}

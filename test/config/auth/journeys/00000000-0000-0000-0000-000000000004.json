@@ -1,0 +1,55 @@
+{
+  "id": "00000000-0000-0000-0000-000000000004",
+  "name": "parallel-http-requests",
+  "description": "Runs two slow independent HTTP calls concurrently and waits for both responses.",
+  "active": true,
+  "debug": true,
+  "default_exp": 1,
+  "start_step_id": "parallel-http",
+  "sub_entries": [],
+  "steps": {
+    "parallel-http": {
+      "name": "Fetch profile and permissions in parallel",
+      "step_type": "AsyncWait",
+      "config": {
+        "wait_for": "ALL",
+        "timeout": "2",
+        "steps": [
+          {
+            "name": "Fetch profile",
+            "step_type": "HttpRequest",
+            "config": {
+              "uri": "http://127.0.0.1:18080/slow/profile",
+              "method": "GET",
+              "headers": {},
+              "response_output": "ctx.profile_response",
+              "parse_json": true
+            }
+          },
+          {
+            "name": "Fetch permissions",
+            "step_type": "HttpRequest",
+            "config": {
+              "uri": "http://127.0.0.1:18080/slow/permissions",
+              "method": "GET",
+              "headers": {},
+              "response_output": "ctx.permissions_response",
+              "parse_json": true
+            }
+          }
+        ],
+        "outcome": { "true": "responses-present", "false": "failure" }
+      }
+    },
+    "responses-present": {
+      "name": "Verify both calls wrote their contexts",
+      "step_type": "IfExpression",
+      "config": {
+        "expression": "getCtxProperty(\"profile_response.jsonBody.name\", \"\") == \"Ada\" && getCtxProperty(\"permissions_response.jsonBody.role\", \"\") == \"admin\"",
+        "outcome": { "true": "success", "false": "failure" }
+      }
+    },
+    "success": { "name": "Success", "step_type": "Success", "config": {} },
+    "failure": { "name": "Failure", "step_type": "Failure", "config": {} }
+  }
+}

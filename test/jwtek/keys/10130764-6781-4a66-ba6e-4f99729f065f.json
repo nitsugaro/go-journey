@@ -1,0 +1,14 @@
+{
+  "id": "10130764-6781-4a66-ba6e-4f99729f065f",
+  "rev": "b08da935-dfed-438f-ba1e-ab4c20f95d2a",
+  "created_at": "2026-05-17T17:48:16.744346-03:00",
+  "modified_at": "2026-05-17T17:48:16.744346-03:00",
+  "kty": "EC",
+  "iat": 1779050896,
+  "exp": 0,
+  "active": true,
+  "value": "MIHcAgEBBEIBzFyj9yKGS+oONY52n9lDQZzniTAnIEIt84K4cIJ4KaYy7PsrmZLdPmWFf6OGK0d0vRB8qutZqR1i3LbHQam/6G2gBwYFK4EEACOhgYkDgYYABABfSCQx0rXMWTuKWjPxuhTwTN9c/o+s979OCIG9JEcR0xONZI2xr9tAwJHElniOUKiifg/WWn2ZHz3vaviLIi3+sQET7BT6+xhBKsVQWD2tUoo3ycWpIKX+3vygmg7OBZ+67qkvDmQpPo6e1VGDKREheziBs5YW60WFEEG9ZR7LEEWBow==",
+  "use": "enc",
+  "alg": "ES512",
+  "purpose": "OIDC"
+}

@@ -1,0 +1,14 @@
+{
+  "id": "15bb5882-693d-4126-bd9d-77a9e3b0ec0a",
+  "rev": "95a969cb-4ff8-4739-a209-7c787d19de6f",
+  "created_at": "2026-07-05T21:15:06.196442-03:00",
+  "modified_at": "2026-07-05T21:15:06.196442-03:00",
+  "kty": "EC",
+  "iat": 1783296906,
+  "exp": 0,
+  "active": true,
+  "value": "MIGkAgEBBDDVTwLVCPbecKXBqAdyLgZ3FhS8eusOa09cEdU0+x8YJMKIWDsAA1bFXyf+MWzio7CgBwYFK4EEACKhZANiAAR3Z7d/i5Zoq3OavitlrW7Dr8bVDmFUJhjV75BIEAkFU/zzA2oNbiwpJe00uMnH+ziHrIsL5SRli9M6rVOjt+/Sc+yQHLBd3y5e4ELQycMIOQeV156KF01tPvMu9/vA4l8=",
+  "use": "enc",
+  "alg": "ES384",
+  "purpose": "OIDC"
+}

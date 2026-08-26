@@ -1,0 +1,22 @@
+{
+  "id": "00000000-0000-0000-0000-000000000006",
+  "name": "suspend-and-resume",
+  "description": "Suspends for an external callback and resumes from the same step using a resume ID.",
+  "active": true,
+  "debug": true,
+  "default_exp": 1,
+  "start_step_id": "suspend",
+  "sub_entries": [],
+  "steps": {
+    "suspend": {
+      "name": "Wait for external approval",
+      "step_type": "SuspendFlow",
+      "config": {
+        "exp": "60",
+        "uri": "http://callback.example.test/approve/{{resume_id}}",
+        "outcome": { "true": "success" }
+      }
+    },
+    "success": { "name": "Success", "step_type": "Success", "config": {} }
+  }
+}

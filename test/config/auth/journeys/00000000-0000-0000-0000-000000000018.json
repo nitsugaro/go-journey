@@ -1,0 +1,26 @@
+{
+  "id": "00000000-0000-0000-0000-000000000018",
+  "name": "resource-http-proxy-fixture",
+  "description": "Fixture coverage for resource journeys and the HTTPProxy step.",
+  "active": false,
+  "confidential": false,
+  "debug": false,
+  "default_exp": 0,
+  "realm": "alpha",
+  "journey_type": "resource",
+  "start_step_id": "proxy",
+  "steps": {
+    "proxy": {
+      "name": "Proxy request",
+      "step_type": "HTTPProxy",
+      "config": {
+        "route_table": "resource-main",
+        "no_match_status": 404,
+        "policy_denied_status": 403,
+        "upstream_error_status": 502,
+        "copy_response_headers": true,
+        "save_match_to": "tempCtx.http_proxy_match"
+      }
+    }
+  }
+}
