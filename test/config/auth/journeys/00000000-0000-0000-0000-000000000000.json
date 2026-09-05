@@ -1,14 +1,15 @@
 {
   "id": "00000000-0000-0000-0000-000000000000",
-  "rev": "73ddaf67-8fbc-4ea6-a37c-c691042d0d73",
+  "rev": "d072cfef-79d3-47c0-b338-b0325785c4c0",
   "created_at": "0001-01-01T00:00:00Z",
-  "modified_at": "2026-07-12T04:30:38.125275-03:00",
+  "modified_at": "2026-08-26T20:03:46.146031-03:00",
   "name": "rpoc-auth",
   "description": "",
   "encrypted_client_inputs": false,
   "confidential": false,
   "active": true,
   "debug": true,
+  "journey_type": "auth",
   "default_exp": 1,
   "realm": "alpha",
   "start_step_id": "1d1c66d7-4999-49b0-b560-1e8f6eb514f5",
@@ -45,7 +46,7 @@
       "config": {
         "journey_id": "00000000-0000-0000-0000-000000000001",
         "outcome": {
-          "false": "0d1c66d7-4999-49b0-b560-1e8f6eb514f5",
+          "false": "1d1c66d7-4999-49b0-b560-1e8f6eb514f5",
           "true": "0d1c66d7-4999-49b0-b560-1e8f6eb514f5"
         }
       }
@@ -53,6 +54,16 @@
   },
   "additional_properties": {
     "notes": {
+      "1d1c66d7-4999-49b0-b560-1e8f6eb514f5": [
+        {
+          "note": "puse una volrvol",
+          "timestamp": 1787785280111
+        },
+        {
+          "note": "malisimo hacelo de nuevo",
+          "timestamp": 1787785287752
+        }
+      ],
       "1ddb120b-faff-483f-af83-db3c1d231b3c": [
         {
           "note": "hoka douvfohvfiuvhuhv",

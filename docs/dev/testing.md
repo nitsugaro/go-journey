@@ -82,6 +82,24 @@ Explicitly test:
 
 ## Release review
 
+The root Go package embeds `ui/dist`. Commit the complete production UI build
+with each release so a fresh Go module download compiles without Node.js or a
+frontend build step. Do not replace the assets with a placeholder file.
+
+When UI sources or dependencies change, regenerate and commit the assets:
+
+```bash
+cd ui
+npm ci
+npm run build
+cd ..
+git add ui/dist
+```
+
+Before tagging a release, verify `go build ./...` and `go test ./...` from a
+clean checkout without running the UI build first. Publish the packaging fix as
+`v0.1.1`; keep the existing `v0.1.0` tag unchanged.
+
 - Document exported API changes.
 - Avoid removing extension points without a replacement and migration note.
 - Verify old outstanding tokens when serialization changes.

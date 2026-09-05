@@ -8,7 +8,7 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
-dist
+# dist is committed because the Go module embeds it at compile time.
 dist-ssr
 *.local
 
